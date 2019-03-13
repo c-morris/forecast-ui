@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>Enter an ASN</h1>
+  <form (ngSubmit)="doThing()" #forecastForm="ngForm">
+    <div class="form-group">
+      <label for="asn">ASN</label>
+      <input type="text" class="form-control" id="asn"
+             required
+             [(ngModel)]="req.asn" name="asn">
+    </div>
+    
+    <button type="submit" class="btn btn-success"
+            [disabled]="!forecastForm.form.valid">Submit</button>
+  </form>
+</div>
