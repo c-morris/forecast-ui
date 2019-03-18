@@ -1,0 +1,7 @@
+{
+  "/asn_hijack_stats/": {
+    "target": "http://192.168.1.103:4201/",
+    "secure": false,
+    "logLevel": "debug"
+  }
+}
