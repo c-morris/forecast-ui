@@ -1,8 +1,8 @@
 <div class="container">
-  <h1>Enter an ASN</h1>
+  <h3>Enter an ASN</h3>
   <form (ngSubmit)="loadTable(req)" #forecastForm="ngForm" style="layout-align:center;">
     <div class="form-group">
-      <label for="asn" class="forecast-label">ASN</label>
+      <!-- this label is useless <label for="asn" class="forecast-label">ASN</label> -->
       <input type="text" class="form-control forecast-input" id="asn"
              required
              [(ngModel)]="req.asn" name="asn">
