@@ -12,7 +12,7 @@
             [disabled]="!forecastForm.form.valid">Submit</button>
   </form>
   <div id="table-placeholder" style="margin-top:15px">
-    <table class="table">
+    <table *ngIf="objKeys(policies).length != 0" class="table">
        <thead>
        <tr>
          <th>Policy</th>
