@@ -8,7 +8,7 @@ import { AsnHijackStatsRequest } from '../asn-hijack-stats-request';
   styleUrls: ['./forecast-form.component.css']
 })
 export class ForecastFormComponent implements OnInit {
-  req = new AsnHijackStatsRequest('13796', 'simpleTimeHeuristic');
+  req = new AsnHijackStatsRequest('13796', 'all');
   constructor() { }
   
   ngOnInit() {
