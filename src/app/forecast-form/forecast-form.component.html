@@ -1,6 +1,6 @@
 <div class="container">
   <h1>Enter an ASN</h1>
-  <form (ngSubmit)="doThing()" #forecastForm="ngForm">
+  <form (ngSubmit)="loadTable(req)" #forecastForm="ngForm">
     <div class="form-group">
       <label for="asn">ASN</label>
       <input type="text" class="form-control" id="asn"
@@ -11,4 +11,7 @@
     <button type="submit" class="btn btn-success"
             [disabled]="!forecastForm.form.valid">Submit</button>
   </form>
+</div>
+<div id="table-placeholder">
+  {{tableContents}}
 </div>

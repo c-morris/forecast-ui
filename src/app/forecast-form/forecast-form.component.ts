@@ -9,13 +9,14 @@ import { AsnHijackStatsRequest } from '../asn-hijack-stats-request';
 })
 export class ForecastFormComponent implements OnInit {
   req = new AsnHijackStatsRequest('13796', 'all');
+  tableContents = '';
   constructor() { }
   
   ngOnInit() {
   }
 
-  doThing() {
-    console.log(this.req);
+  loadTable() {
+      this.tableContents += 'a';
   }
   get diagnostic() { return JSON.stringify(this.req); }
 
