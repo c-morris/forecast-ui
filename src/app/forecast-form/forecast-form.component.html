@@ -1,9 +1,9 @@
 <div class="container">
   <h1>Enter an ASN</h1>
-  <form (ngSubmit)="loadTable(req)" #forecastForm="ngForm">
+  <form (ngSubmit)="loadTable(req)" #forecastForm="ngForm" style="layout-align:center;">
     <div class="form-group">
-      <label for="asn">ASN</label>
-      <input type="text" class="form-control" id="asn"
+      <label for="asn" class="forecast-label">ASN</label>
+      <input type="text" class="form-control forecast-input" id="asn"
              required
              [(ngModel)]="req.asn" name="asn">
     </div>
@@ -11,7 +11,24 @@
     <button type="submit" class="btn btn-success"
             [disabled]="!forecastForm.form.valid">Submit</button>
   </form>
-</div>
-<div id="table-placeholder">
-  {{tableContents}}
+  <div id="table-placeholder" style="margin-top:15px">
+    <table class="table">
+       <thead>
+       <tr>
+         <th>Policy</th>
+         <th>Neither Hijacked nor Blocked</th>
+         <th class="forecast-green">Hijacked and Blocked</th>
+         <th class="forecast-red">Not Hijacked but Blocked</th>
+         <th class="forecast-red">Hijacked but not Blocked</th>
+       </tr>
+       </thead>
+       <tr *ngFor="let policy of objKeys(policies)">
+         <td><strong>{{policy}}</strong></td>
+         <td>{{policies[policy].neitherBlockedNorHijacked}}</td>
+         <td class="forecast-green">{{policies[policy].hijackedAndBlocked}}</td>
+         <td class="forecast-red">{{policies[policy].notHijackedButBlocked}}</td>
+         <td class="forecast-red">{{policies[policy].hijackedButNotBlocked}}</td>
+       </tr>
+     </table>
+  </div>
 </div>

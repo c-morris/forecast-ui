@@ -9,7 +9,7 @@ export class ForecastTableService {
   constructor(private http: HttpClient) { }
 
   /* Return an Observable of response body. */
-  getForecastTable(asn: number) {
-    return this.http.get('/api/asn_hijack_stats/' + asn);
+  getForecastTable(asn) {
+    return this.http.get('/asn_hijack_stats/' + asn + '/all');
   }
 }

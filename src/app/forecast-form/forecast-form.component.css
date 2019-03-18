@@ -1,0 +1,16 @@
+input.forecast-input {
+  width: 100px;
+  display: inline-block;
+}
+
+label.forecast-label {
+  display: block;
+}
+
+.forecast-green {
+  color:#1e7e34;
+}
+
+.forecast-red {
+  color:#721c24;
+}
