@@ -23,8 +23,14 @@
        </tr>
        </thead>
        <tr *ngFor="let policy of objKeys(policies)">
-         <td><strong>{{policy}}</strong></td>
-         <td>{{policies[policy].neitherBlockedNorHijacked}}</td>
+         <td>
+            <!--<img class="details-question-mark" 
+                    src="assets/icon-round-question-mark.svg" 
+                    type="image/svg+xml">
+                    </object>-->
+           <strong>{{policy}}</strong></td>
+         <td>
+            {{policies[policy].neitherBlockedNorHijacked}}</td>
          <td class="forecast-green">{{policies[policy].hijackedAndBlocked}}</td>
          <td class="forecast-red">{{policies[policy].notHijackedButBlocked}}</td>
          <td class="forecast-red">{{policies[policy].hijackedButNotBlocked}}</td>
