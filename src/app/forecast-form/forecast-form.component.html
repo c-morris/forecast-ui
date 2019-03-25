@@ -15,6 +15,7 @@
     <table *ngIf="objKeys(policies).length != 0" class="table">
        <thead>
        <tr>
+         <th></th>
          <th>Policy</th>
          <th>Neither Hijacked nor Blocked</th>
          <th class="forecast-green">Hijacked and Blocked</th>
@@ -23,11 +24,12 @@
        </tr>
        </thead>
        <tr *ngFor="let policy of objKeys(policies)">
-         <td>
-            <!--<img class="details-question-mark" 
+         <td><img class="details-question-mark" 
                     src="assets/icon-round-question-mark.svg" 
-                    type="image/svg+xml">
-                    </object>-->
+                    type="image/svg+xml"
+                    width="14px" height="14px"></td>
+         <td>
+            
            <strong>{{policy}}</strong></td>
          <td>
             {{policies[policy].neitherBlockedNorHijacked}}</td>

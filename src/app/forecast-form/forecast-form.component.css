@@ -15,6 +15,10 @@ label.forecast-label {
   color:#721c24;
 }
 
+td {
+  position: relative;
+}
+
 .details-question-mark {
 }
 
