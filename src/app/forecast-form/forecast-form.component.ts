@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { AsnHijackStatsRequest } from '../asn-hijack-stats-request';
 import { ForecastTableService } from '../forecast-table.service';
 
+const bootstrap = require('bootstrap');
+
 @Component({
   selector: 'app-forecast-form',
   templateUrl: './forecast-form.component.html',
