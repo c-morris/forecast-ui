@@ -24,10 +24,13 @@
        </tr>
        </thead>
        <tr *ngFor="let policy of objKeys(policies)">
-         <td><img class="details-question-mark" 
+         <td><a routerLink="/policy-descriptions">
+           <img class="details-question-mark" 
+                    title="Policy description placeholder"
+                    data-toggle="tooltip"
                     src="assets/icon-round-question-mark.svg" 
                     type="image/svg+xml"
-                    width="14px" height="14px"></td>
+                    width="14px" height="14px"></a></td>
          <td>
             
            <strong>{{policy}}</strong></td>

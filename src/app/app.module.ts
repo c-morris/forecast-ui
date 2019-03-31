@@ -6,11 +6,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ForecastFormComponent } from './forecast-form/forecast-form.component';
+import { PolicyDescriptionsComponent } from './policy-descriptions/policy-descriptions.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ForecastFormComponent
+    ForecastFormComponent,
+    PolicyDescriptionsComponent
   ],
   imports: [
     BrowserModule,

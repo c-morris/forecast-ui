@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 import { AsnHijackStatsRequest } from '../asn-hijack-stats-request';
 import { ForecastTableService } from '../forecast-table.service';
+import * as $ from 'jquery';
 
-const bootstrap = require('bootstrap');
+//const bootstrap = require('bootstrap');
 
 @Component({
   selector: 'app-forecast-form',
@@ -19,6 +20,12 @@ export class ForecastFormComponent implements OnInit {
   constructor(private forecastTableService: ForecastTableService) { }
   
   ngOnInit() {
+      // enable bootstrap tooltips (globally)
+      // enabling them globally is probably not ideal
+      // TODO: find out how to enable them only in this component
+      //$(function () {
+      //      $('[data-toggle="tooltip"]').tooltip()
+      //})
   }
 
   writeTable() {
