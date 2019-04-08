@@ -23,21 +23,28 @@ export class ForecastFormComponent implements OnInit {
       // enable bootstrap tooltips (globally)
       // enabling them globally is probably not ideal
       // TODO: find out how to enable them only in this component
+      // wait this isn't necessary at all
       //$(function () {
       //      $('[data-toggle="tooltip"]').tooltip()
       //})
   }
 
+  /** Writes the table to the page.
+    */
   writeTable() {
       this.policies = this.tableResponse[Object.keys(this.tableResponse)[0]];
   }
 
+  /** Load the table from the API using the forecast-table service.
+    */
   loadTable(asn: number) {
       this.forecastTableService.getForecastTable(this.req.asn)
         .subscribe((data) => {
     	  this.tableResponse = data;
           this.writeTable();});
   }
+  
+  // debug function to print the request
   get diagnostic() { return JSON.stringify(this.req); }
 
 }

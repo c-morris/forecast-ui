@@ -9,6 +9,9 @@ export class PolicyDescriptionsComponent implements OnInit {
 
   constructor() { }
 
+  /** This is a static router view that displays the policy
+    * descriptions. 
+    */
   ngOnInit() {
   }
 
