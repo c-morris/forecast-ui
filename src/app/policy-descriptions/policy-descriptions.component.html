@@ -1,106 +1,47 @@
 <div id="policy-descriptions">
 <h3>Policy Descriptions</h3>
-<ul>
-<p>What_If_Analysis apply the analysis policy on each announcement to determine if an attack causes the conflict. Current the policies implemented are:</p>
-<ul>
-<li>
-<h4><a id="TimeBasedHeuristic_3"></a>Time-Based-Heuristic</h4>
-<ul>
-<li>
-<h5><a id="1_SimpleTimeBasedHeuristic_4"></a>1. Simple-Time-Based-Heuristic</h5>
-<ul>
-<li>This policy observes the age of an announcement and factors that into the decision about its validity. Route Hijacks tend to be short lived, so long-standing announcements with an invalid ROA are more likely to be valid routes with improperly configured RPKI than actual attacks. This policy will, for example, output “Whitelist” if a year-old announcement has an invalid ROA and the parameter for “Whitelist” is 10 months.</li>
-<li>Output: analysis decision from 4 possible decisions (0-Enforce, 1-Deprefer, 2-Pass, 3-Whitelist)</li>
-<li>Input:
-<ul>
-<li>time record for this announcement in epoch format (integer t),</li>
-<li>wherether invalid by asn, length or both (boolean invalid_length, boolean invalid_asn),</li>
-<li>3 parameters configurable for INVALID_LENGTH (str L1, str L2, str L3),</li>
-<li>3 parameters configurable for INVALID_ASN (str A1, str A2, str A3),</li>
-<li>3 parameters configurable for INVALID_BOTH (str B1, str B2, str B3).
-<ul>
-<li>Example: to set L1 to 2 weeks plus 1 hour, L1=“1w:1h” or “14d:1h”</li>
-<li>Support units are: s-second, m-minute, h-hour, d-day, w-week</li>
-<li>month and year is not supported due to inaccuracy</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Each parameter is in the format of the length of time, and is treated as the boundary between the decisions in the timeline.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<h4><a id="Enforce_by_Invalid_Type_18"></a>Enforce by Invalid_Type</h4>
-<ul>
-<li>The following policies examine the type of invalidity which will be “INVALID_ASN” or “INVALID_LENGTH”. INVALID_ASN means that the AS announcing the prefix is not the one specified in the ROA. INVALID_LENGTH, means that, although the correct AS is announcing the prefix, the length is outside the range specified in the ROA. This policy returns</li>
-<li>
-<h5><a id="2_EnforceInvalid_ASNOnly_21"></a>2. Enforce-Invalid_ASN-Only</h5>
-<ul>
-<li>Output: Enforce-Invalid_ASN-Only returns:
-<ul>
-<li>2 “Enforce” if Invalid_ASN is True,</li>
-<li>0 “Pass” otherwise.</li>
-</ul>
-</li>
-<li>Input: wherether invalid by asn (boolean invalid_asn).</li>
-</ul>
-</li>
-<li>
-<h5><a id="3_EnforceInvalid_LengthOnly_27"></a>3. Enforce-Invalid_Length-Only</h5>
-<ul>
-<li>Output: Enforce-Invalid_Length-Only returns:
-<ul>
-<li>2 “Enforce” if Invalid_Length is True,</li>
-<li>0 “Pass” otherwise.</li>
-</ul>
-</li>
-<li>Input: wherether invalid by length (boolean invalid_length).</li>
-</ul>
-</li>
-<li>
-<h5><a id="4_EnforceInvalid_BothOnly_33"></a>4. Enforce-Invalid_Both-Only</h5>
-<ul>
-<li>Output: Enforce-Invalid_Length-Only returns:
-<ul>
-<li>2 “Enforce” if Invalid_Length is True and Invalid_ASN is True,</li>
-<li>0 “Pass” otherwise.</li>
-</ul>
-</li>
-<li>Input: wherether invalid by length or invalid by asn (boolean invalid_length, boolean invalid_asn)</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<h4><a id="PassIfNoAlternativeRoute_39"></a>Pass-If-No-Alternative-Route</h4>
-<ul>
-<li>
-<h4><a id="5_Version1_40"></a>5. Version-1</h4>
-<ul>
-<li>Output: Pass-If-No-Alternative-Route-Version-1 returns:</li>
-<li>2 “Pass” if No alternative prefix from neighbor ASes to to the origin exists.</li>
-<li>1 “Deprefer” otherwise</li>
-</ul>
-</li>
-<li>
+<p></p>
+
+<h4 id="SimpleTimeHeuristic">Simple Time Heuristic</h4>
+<p><i>We discussed last Monday what this policy does and it is not what Xinyu’s
+readme says so the person who is implementing the policy in code please help me
+write this description</i></p>
+
+<h4 id="ROV">ROV</h4>
+<p>Block route announcements using standard Resource Certification (RPKI) <a
+href="https://www.ripe.net/manage-ips-and-asns/resource-management/certification/bgp-origin-validation">
+Route Origin Validation</a> (ROV).</p>
+
+<h4 id="EnforceInvalidASNOnly">Enforce Invalid ASN Only</h4>
+<p>Block route announcements <i>only</i> when the originating AS is in conflict
+with a Route Origin Authorization (ROA). Announcements containing prefixes
+exceeding the maximum length authorized by a ROA are <i>allowed</i>.</p> 
+
+<h4 id="EnforceInvalidLengthOnly">Enforce Invalid Length Only</h4>
+<p>Block route announcements <i>only</i> when the length of the announced prefix exceeds
+the maximum length authorized by a ROA. Announcements originating from an AS
+that is not authorized to do so are <i>allowed</i>.</p>
+
+<h4 id="PassIfNoAlternativeRoute">Pass If No Alternative Route</h4>
+<p>Not implemented yet. The descriptions below are still Verbatim from Xinyu's
+README.</p>
+
+<h4 id="5_Version1_40">5. Version-1</h4>
+
+Output: Pass-If-No-Alternative-Route-Version-1 returns:
+2 “Pass” if No alternative prefix from neighbor ASes to to the origin exists.
+1 “Deprefer” otherwise
+
 <p>Input: origin of the next best route (integer n)</p>
-</li>
-<li>
+
 <h4><a id="6_Version2_46"></a>6. Version-2</h4>
-<ul>
-<li>Output: Pass-If-No-Alternative-Route-Version-2 returns:</li>
-<li>2 “Pass” if No alternative prefix from neighbor ASes or less specific prefix in the current as to the origin exists.</li>
-<li>1 “Deprefer” otherwise</li>
-</ul>
-</li>
-<li>
+
+Output: Pass-If-No-Alternative-Route-Version-2 returns:
+2 “Pass” if No alternative prefix from neighbor ASes or less specific prefix in the current as to the origin exists.
+1 “Deprefer” otherwise
+
 <p>Input:</p>
-<ul>
-<li>Origin of the next best route (integer n)</li>
-<li>List of prefix-origin pairs for current ASN (pandas.DataFrame df)</li>
-</ul>
-</li>
-</ul>
-</li>
+
+Origin of the next best route (integer n)
+List of prefix-origin pairs for current ASN (pandas.DataFrame df)
+
