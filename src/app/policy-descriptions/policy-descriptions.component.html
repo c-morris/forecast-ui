@@ -2,15 +2,16 @@
 <h3>Policy Descriptions</h3>
 <p></p>
 
-<h4 id="SimpleTimeHeuristic">Simple Time Heuristic</h4>
-<p><i>We discussed last Monday what this policy does and it is not what Xinyu’s
-readme says so the person who is implementing the policy in code please help me
-write this description</i></p>
-
 <h4 id="ROV">ROV</h4>
 <p>Block route announcements using standard Resource Certification (RPKI) <a
 href="https://www.ripe.net/manage-ips-and-asns/resource-management/certification/bgp-origin-validation">
 Route Origin Validation</a> (ROV).</p>
+
+<h4 id="SimpleTimeHeuristic">Simple Time Heuristic</h4>
+<p>If a route announcement is older than a specified time interval, then it is
+whitelisted regardless of its ROV validity. Since origin hijacks tend to be
+short-lived, a long-lived, invalid announcement is more likely to be a
+misconfiguration than an attack.</p>
 
 <h4 id="EnforceInvalidASNOnly">Enforce Invalid ASN Only</h4>
 <p>Block route announcements <i>only</i> when the originating AS is in conflict
