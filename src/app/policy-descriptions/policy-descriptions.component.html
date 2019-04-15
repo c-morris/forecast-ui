@@ -3,9 +3,10 @@
 <p></p>
 
 <h4 id="ROV">ROV</h4>
-<p>Block route announcements using standard Resource Certification (RPKI) <a
-href="https://www.ripe.net/manage-ips-and-asns/resource-management/certification/bgp-origin-validation">
-Route Origin Validation</a> (ROV).</p>
+<p>Block route announcements using standard Resource Certification (<a href="https://tools.ietf.org/html/rfc6487">RPKI</a>) 
+ Route Origin Validation (<a
+ href="https://www.ripe.net/manage-ips-and-asns/resource-management/certification/bgp-origin-validation">ROV</a>)
+ as defined in <a href="https://tools.ietf.org/html/rfc6811">RFC 6811</a>.</p>
 
 <h4 id="SimpleTimeHeuristic">Simple Time Heuristic</h4>
 <p>If a route announcement is older than a specified time interval, then it is
@@ -15,19 +16,18 @@ misconfiguration than an attack.</p>
 
 <h4 id="EnforceInvalidASNOnly">Enforce Invalid ASN Only</h4>
 <p>Block route announcements <i>only</i> when the originating AS is in conflict
-with a Route Origin Authorization (ROA). Announcements containing prefixes
-exceeding the maximum length authorized by a ROA are <i>allowed</i>.</p> 
+with a Route Origin Authorization (<a href="https://tools.ietf.org/html/rfc6482">ROA</a>). 
+Announcements containing prefixes exceeding the maximum length authorized by a ROA are <i>allowed</i>.</p> 
 
 <h4 id="EnforceInvalidLengthOnly">Enforce Invalid Length Only</h4>
 <p>Block route announcements <i>only</i> when the length of the announced prefix exceeds
 the maximum length authorized by a ROA. Announcements originating from an AS
 that is not authorized to do so are <i>allowed</i>.</p>
 
-<h4 id="PassIfNoAlternativeRoute">Pass If No Alternative Route</h4>
-<p>Not implemented yet. The descriptions below are still Verbatim from Xinyu's
-README.</p>
+<h4 id="Depref">Depref</h4>
+<p>Not implemented yet.</p>
 
-<h4 id="5_Version1_40">5. Version-1</h4>
+<!--<h4 id="5_Version1_40">5. Version-1</h4>
 
 Output: Pass-If-No-Alternative-Route-Version-1 returns:
 2 “Pass” if No alternative prefix from neighbor ASes to to the origin exists.
@@ -45,4 +45,4 @@ Output: Pass-If-No-Alternative-Route-Version-2 returns:
 
 Origin of the next best route (integer n)
 List of prefix-origin pairs for current ASN (pandas.DataFrame df)
-
+-->
