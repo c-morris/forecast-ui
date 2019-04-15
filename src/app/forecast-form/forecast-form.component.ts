@@ -14,6 +14,7 @@ import * as $ from 'jquery';
 export class ForecastFormComponent implements OnInit {
   private tableResponse: any = {};
   private policies: any = {};
+  private parentIfStubAS: string = '';
   private req = new AsnHijackStatsRequest('13796', 'all');
   public objKeys = Object.keys;
   tableContents = '';
@@ -32,7 +33,10 @@ export class ForecastFormComponent implements OnInit {
   /** Writes the table to the page.
     */
   writeTable() {
+      // should probably find a cleaner way of doing this...
       this.policies = this.tableResponse[Object.keys(this.tableResponse)[0]];
+      this.parentIfStubAS = this.policies.parent_if_stub_as;
+      delete this.policies.parent_if_stub_as;
   }
 
   /** Load the table from the API using the forecast-table service.

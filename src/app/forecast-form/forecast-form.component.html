@@ -11,6 +11,8 @@
     <button type="submit" class="btn btn-success"
             [disabled]="!forecastForm.form.valid">Submit</button>
   </form>
+  <div *ngIf="parentIfStubAS.length != 0" id="parent-mapping" style="margin-top:15px;">This AS is a stub. Showing equivalent forecast
+  for AS{{parentIfStubAS}}.</div>
   <div id="table-placeholder" style="margin-top:15px">
     <table *ngIf="objKeys(policies).length != 0" class="table">
        <thead>
