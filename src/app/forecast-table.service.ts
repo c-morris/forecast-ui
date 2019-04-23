@@ -11,6 +11,6 @@ export class ForecastTableService {
   /** Return an Observable of response body. 
     */
   getForecastTable(asn) {
-    return this.http.get('/asn_hijack_stats/' + asn + '/all/');
+    return this.http.get('/asn_policy_stats/' + asn + '/all/');
   }
 }
