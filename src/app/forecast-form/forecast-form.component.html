@@ -13,7 +13,8 @@
   </form>
   <div *ngIf="parentIfStubAS.length != 0" id="parent-mapping" style="margin-top:15px;">This AS is a stub. Showing equivalent forecast
   for AS{{parentIfStubAS}}.</div>
-  <div *ngIf="objKeys(policies).length != 0">Showing results for March 29,
+  <div *ngIf="objKeys(policies).length != 0">These are preliminary results only, and they
+  may not be accurate.<br />Showing results for March 29,
   2019. These statistics are for prefixes with ROAs only.</div>
   <div id="table-placeholder" style="margin-top:15px">
     <table *ngIf="objKeys(policies).length != 0" class="table">
