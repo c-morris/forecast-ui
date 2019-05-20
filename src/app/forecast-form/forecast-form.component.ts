@@ -12,10 +12,10 @@ import * as $ from 'jquery';
   styleUrls: ['./forecast-form.component.css']
 })
 export class ForecastFormComponent implements OnInit {
-  private tableResponse: any = {};
-  private policies: any = {};
-  private parentIfStubAS: string = '';
-  private req = new AsnPolicyStatsRequest('13796', 'all');
+  public tableResponse: any = {};
+  public policies: any = {};
+  public parentIfStubAS: string = '';
+  public req = new AsnPolicyStatsRequest('13796', 'all');
   public objKeys = Object.keys;
   tableContents = '';
   constructor(private forecastTableService: ForecastTableService) { }
@@ -34,7 +34,7 @@ export class ForecastFormComponent implements OnInit {
 
   /** Load the table from the API using the forecast-table service.
     */
-  loadTable(asn: number) {
+  loadTable() {
       this.forecastTableService.getForecastTable(this.req.asn)
         .subscribe((data) => {
     	  this.tableResponse = data;
